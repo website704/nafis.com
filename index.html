@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>منصة نافس التعليمية</title>
+<link rel="stylesheet" href="style.css"> 
+</head>
+<body>
+<header class="navbar">
+    <div class="right-section">
+        <p class="teacher">تنفيذ الأستاذة</p>
+        <h2 class="name">عائشه الشهري</h2>
+    </div>
+    <div class="left-section">
+        <h1 class="rainbow-text">منصة نافس التعليميه<span class="bouncing-emoji">🏆</span></h1>
+        <p>الرياضيات - الصف السادس الابتدائي</p>
+    </div>
+</header>
+<div class="card" id="welcome-card">
+    <h1>مرحبًا بك في رحلة التعلم</h1>
+    <p>اكتشف عالم الرياضيات الممتع وطور مهاراتك خطوة بخطوة</p>
+    <div class="stats">
+        <div class="stat">
+            <div class="icon">🎯</div>
+            <p class="level">المستوى: مبتدئ</p>
+        </div>
+        <div class="stat">
+            <div class="icon">⭐</div>
+            <p class="points">النقاط: 0</p>
+        </div>
+        <div class="stat">
+            <div class="icon">📊</div>
+            <p class="progress">تقدّمك: 0%</p>
+            <div class="bar"><div class="fill" style="width: 0%;"></div></div>
+        </div>
+    </div>
+</div>
+
+<h2>المهارات الرياضية</h2>
+<div class="grid">
+    <div class="card">
+        <div class="icon">📊</div>
+        <div class="title">القياس</div>
+        <div class="stars">★★★★★</div>
+        <div class="details">٢٠ سؤال تفاعلي<br>النقاط المكتسبة</div>
+        <div class="progress-bar"><div class="progress-fill" style="width: 0%;"></div></div>
+        <div class="progress-text">مكتمل ٠٪</div>
+        <a href="quiz.html?subject=القياس" class="button">🚀 ابدأ الاختبار</a>
+    </div>
+
+    <div class="card">
+        <div class="icon">📐</div>
+        <div class="title">الهندسة</div>
+        <div class="stars">★★★★★</div>
+        <div class="details">٢٠ سؤال تفاعلي<br>النقاط المكتسبة</div>
+        <div class="progress-bar"><div class="progress-fill" style="width: 0%;"></div></div>
+        <div class="progress-text">مكتمل ٠٪</div>
+        <a href="quiz.html?subject=الهندسة" class="button">🚀 ابدأ الاختبار</a>
+    </div>
+
+    <div class="card">
+        <div class="icon">🔢</div>
+        <div class="title">الأعداد والعمليات</div>
+        <div class="stars">★★★★★</div>
+        <div class="details">٢٠ سؤال تفاعلي<br>النقاط المكتسبة</div>
+        <div class="progress-bar"><div class="progress-fill" style="width: 0%;"></div></div>
+        <div class="progress-text">مكتمل ٠٪</div>
+        <a href="quiz.html?subject=الأعداد والعمليات" class="button">🚀 ابدأ الاختبار</a>
+    </div>
+
+    <div class="card">
+        <div class="icon">🌍</div>
+        <div class="title">الكسور والبيانات</div>
+        <div class="stars">★★★★★</div>
+        <div class="details">١٢ سؤال تفاعلي<br>النقاط المكتسبة</div>
+        <div class="progress-bar"><div class="progress-fill" style="width: 0%;"></div></div>
+        <div class="progress-text">مكتمل ٠٪</div>
+        <a href="quiz.html?subject=الكسور والبيانات" class="button">🚀 ابدأ الاختبار</a>
+    </div>
+
+    <div class="card">
+        <div class="icon">🧩</div>
+        <div class="title">المسائل اللفظيه والأنماط</div>
+        <div class="stars">★★★★★</div>
+        <div class="details"> سؤال تفاعلي<br>النقاط المكتسبة</div>
+        <div class="progress-bar"><div class="progress-fill" style="width: 0%;"></div></div>
+        <div class="progress-text">مكتمل ٠٪</div>
+        <a href="quiz.html?subject=المسائل اللفظيه والأنماط" class="button">🚀 ابدأ الاختبار</a>
+    </div>
+
+
+<script>
+function toArabicNumber(num) {
+  const arabicDigits = ['٠','١','٢','٣','٤','٥','٦','٧','٨','٩'];
+  return num.toString().replace(/\d/g, d => arabicDigits[d]);
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+  const subjects = [
+    "القياس",
+    "الهندسة",
+    "الأعداد والعمليات",
+    "الكسور والبيانات",
+    "المسائل اللفظيه والأنماط",
+  ];
+
+  // تحديث كل بطاقة مادة
+  document.querySelectorAll(".card").forEach(card => {
+    const titleEl = card.querySelector(".title");
+    if (!titleEl) return; // تخطي بطاقة الترحيب
+    const title = titleEl.innerText.trim();
+
+    const savedProgress = localStorage.getItem(title + "_progress");
+    const savedPoints = localStorage.getItem(title + "_points");
+    const percent = savedProgress ? parseInt(savedProgress) : 0;
+    const points = savedPoints ? parseInt(savedPoints) : 0;
+
+    // شريط التقدم
+    const fill = card.querySelector(".progress-fill");
+    const text = card.querySelector(".progress-text");
+    const details = card.querySelector(".details");
+
+    if (fill && text) {
+      fill.style.width = percent + "%";
+      text.textContent = "مكتمل " + toArabicNumber(percent) + "٪";
+    }
+
+    // النقاط في تفاصيل الكرت
+    if (details) {
+      details.innerHTML = `٢٠ سؤال تفاعلي<br>النقاط المكتسبة: ${toArabicNumber(points)}`;
+    }
+  });
+
+  // تحديث التقدم العام في الترحيب
+  let totalProgress = 0, subjectCount = 0;
+  subjects.forEach(sub => {
+    const val = localStorage.getItem(sub + "_progress");
+    if (val) {
+      totalProgress += parseInt(val);
+      subjectCount++;
+    }
+  });
+  const avgProgress = subjectCount > 0 ? Math.round(totalProgress / subjectCount) : 0;
+
+  const welcomeFill = document.querySelector(".bar .fill");
+  const welcomeText = document.querySelector(".progress");
+  if (welcomeFill && welcomeText) {
+    welcomeFill.style.width = avgProgress + "%";
+    welcomeText.textContent = `تقدّمك: ${toArabicNumber(avgProgress)}٪`;
+  }
+
+  // تحديث النقاط الإجمالية
+  let totalPoints = 0;
+  subjects.forEach(sub => {
+    const pts = localStorage.getItem(sub + "_points");
+    if (pts) totalPoints += parseInt(pts);
+  });
+  const welcomePoints = document.querySelector(".points");
+  if (welcomePoints) {
+    welcomePoints.textContent = "النقاط: " + toArabicNumber(totalPoints);
+  }
+});
+</script>
+
+</body>
+</html>
