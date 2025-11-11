@@ -18,7 +18,7 @@ header, .navbar {
   justify-content: space-between;
   align-items: center;
   padding: 1px 33px;
-  background: linear-gradient(to left, #fff, #faf7fb);
+  background: linear-gradient(to left, #fff, #e3d5eb,#fff);
   border-radius: 24px;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
   margin: 12px auto;
@@ -157,7 +157,7 @@ header nav ul li a:hover {
 /* 🔹 Card Design */
 .card {
   background: linear-gradient(145deg, #ffffff, #f9fdfb);
-  border: 2px solid #c6f7d1;
+  border: 2px solid #7f0d46;
   border-radius: 20px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
   text-align: center;
@@ -172,8 +172,8 @@ header nav ul li a:hover {
   transform: translateY(-5px);
 }
 .card {
-      background: linear-gradient(145deg, #ffffff, #f9fdfb);
-      border: 2px solid #c6f7d1;
+      background: linear-gradient(145deg, #ffffff, #f4dde8,#ffffff);
+      border: 2px solid #e080b0;
       border-radius: 20px;
       box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
       text-align: center;
@@ -233,7 +233,7 @@ p {
 
 /* 🔹 Color classes */
 .level { color: #d8486f; }
-.points { color: #e7b43f; }
+.points { color: #6e510b; }
 .progress { color: #5ec6a1; }
 
 /* 🔹 Progress Bar */
